@@ -71,10 +71,10 @@ export const getWineByRose = async (req, res) => {
 export const getWineBySparkling = async (req, res) => {
   try {
     const wine = await WineData.find({
-      VarietalType: "No sparkling wines found.",
+      VarietalType: "Sparkling",
     });
     if (!wine) {
-      return res.status(404).json({ message: "Invalid ID" });
+      return res.status(404).json({ message: "No sparkling wines found." });
     }
     res.json(wine);
   } catch (error) {
