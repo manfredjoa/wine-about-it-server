@@ -2,7 +2,7 @@ import db from "./db/connection.js";
 import express from "express";
 import cors from "cors";
 import logger from "morgan";
-// import routes from "./routes/index.js";
+import routes from "./routes/index.js";
 import dotenv from "dotenv";
 
 const app = express();
@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 app.use(logger("dev"));
 
-// app.use("/api", routes);
+app.use("/api", routes);
 
 db.on("connected", () => {
   console.clear();
@@ -22,3 +22,4 @@ db.on("connected", () => {
     console.log(`Express server running on PORT: ${PORT}`);
   });
 });
+console.log("yo");
