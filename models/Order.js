@@ -1,7 +1,3 @@
-// items:[], ref object
-// total:Number
-//user: object
-
 import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema({
@@ -17,6 +13,21 @@ const orderSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
+  },
+  shippingAddress: {
+    type: String,
+  },
+  isPaid: {
+    type: Boolean,
+    default: true,
+  },
+  isDelivered: {
+    type: Boolean,
+    default: false,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 
