@@ -22,3 +22,4 @@ db.on("connected", () => {
     console.log(`Express server running on PORT: ${PORT}`);
   });
 });
+console.log("yo");
