@@ -14,6 +14,7 @@ export const getWines = async (req, res) => {
 // Gets singular wine by ID
 export const getWineById = async (req, res) => {
   try {
+    const id = req.params.id;
     const wine = await WineData.findById(id);
     if (!wine) {
       return res.status(404).json({ message: "Invalid Wine ID" });
