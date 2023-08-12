@@ -2,28 +2,28 @@ import User from "../models/User.js";
 import bcrypt from "bcrypt";
 
 export const registerUser = async (req, res) => {
-  const { firstName, lastName, dateOfBirth, EMail, Password } = req.body;
+  const { firstName, lastName, dateOfBirth, email, password } = req.body;
   let user;
 
   try {
     // check if user already exists
-    user = await User.findOne({ EMail });
+    user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({ error: "User already exists" });
     }
 
     // hash
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(Password, salt);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     // create new user
     user = new User({
       firstName,
       lastName,
-      EMail,
-      Password: hashedPassword,
+      email,
+      password: hashedPassword,
       dateOfBirth,
-      Favorites: [],
+      favorites: [],
     });
 
     await user.save();

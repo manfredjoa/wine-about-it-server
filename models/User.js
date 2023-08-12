@@ -13,7 +13,7 @@ let userSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
-  EMail: {
+  email: {
     type: String,
     required: true,
     match: emailPattern,
@@ -22,12 +22,12 @@ let userSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  Password: {
+  password: {
     type: String,
     required: true,
     minlength: 8,
   },
-  Favorites: [
+  favorites: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "WineData",
