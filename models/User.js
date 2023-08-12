@@ -3,7 +3,12 @@ import mongoose from "mongoose";
 const emailPattern = /^([\w-.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 
 let userSchema = new mongoose.Schema({
-  UserName: {
+  firstName: {
+    type: String,
+    trim: true,
+    required: true,
+  },
+  lastName: {
     type: String,
     trim: true,
     required: true,
@@ -12,6 +17,10 @@ let userSchema = new mongoose.Schema({
     type: String,
     required: true,
     match: emailPattern,
+  },
+  dateOfBirth: {
+    type: Date,
+    required: true,
   },
   Password: {
     type: String,

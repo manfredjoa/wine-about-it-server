@@ -2,7 +2,7 @@ import User from "../models/User.js";
 import bcrypt from "bcrypt";
 
 export const registerUser = async (req, res) => {
-  const { UserName, EMail, Password } = req.body;
+  const { firstName, lastName, dateOfBirth, EMail, Password } = req.body;
   let user;
 
   try {
@@ -18,9 +18,11 @@ export const registerUser = async (req, res) => {
 
     // create new user
     user = new User({
-      UserName,
+      firstName,
+      lastName,
       EMail,
       Password: hashedPassword,
+      dateOfBirth,
       Favorites: [],
     });
 
