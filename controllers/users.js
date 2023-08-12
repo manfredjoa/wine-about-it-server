@@ -1,5 +1,21 @@
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
+// for development purposes
+let SALT_ROUNDS = 11;
+let TOKEN_KEY = "areallylonggoodkey";
+
+// for production
+if (process.env.NODE_ENV === "production") {
+  SALT_ROUNDS = Number(process.env.SALT_ROUNDS);
+  TOKEN_KEY = process.env.TOKEN_KEY;
+}
+
+// for JWT expiration
+const today = new Date();
+const exp = new Date(today);
+exp.setDate(today.getDate() + 30);
 
 export const registerUser = async (req, res) => {
   const { firstName, lastName, dateOfBirth, email, password } = req.body;
@@ -28,10 +44,20 @@ export const registerUser = async (req, res) => {
 
     await user.save();
 
-    res.status(201).json({ message: "User registered successfully" });
+    const payload = {
+      id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      dateOfBirth: user.dateOfBirth,
+      exp: parseInt(exp.getTime() / 1000),
+    };
+
+    const token = jwt.sign(payload, TOKEN_KEY);
+    res.status(201).json({ message: "User registered successfully", token });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Server error" });
+    console.error(error.message);
+    res.status(400).json({ error: error.message });
   }
 };
 
