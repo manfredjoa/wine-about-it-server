@@ -4,8 +4,11 @@ import * as controllers from "../controllers/users.js";
 const router = Router();
 
 router.post("/register", controllers.registerUser);
+router.post("/login", controllers.loginUser);
 router.get("/", controllers.getUsers);
-router.delete("/:_id", controllers.deleteUserById);
-router.patch("/:_id/favorites", controllers.updateUserFavoritesById);
+router.get("/id/:id", controllers.getUserById);
+router.delete("/:id", controllers.deleteUserById);
+router.patch("/:id/favorites", controllers.updateUserFavoritesById);
+router.get("/verify", controllers.verify);
 
 export default router;
