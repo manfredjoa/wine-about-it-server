@@ -33,6 +33,21 @@ let userSchema = new mongoose.Schema({
       ref: "WineData",
     },
   ],
+  shippingAddress: {
+    streetAddress: {
+      type: String,
+    },
+    streetAddress2: { type: String },
+
+    city: {
+      type: String,
+    },
+    state: { type: String },
+
+    postalCode: {
+      type: Number,
+    },
+  },
 });
 
 export default mongoose.model("User", userSchema);

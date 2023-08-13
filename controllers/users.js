@@ -40,6 +40,13 @@ export const registerUser = async (req, res) => {
       password: hashedPassword,
       dateOfBirth,
       favorites: [],
+      shippingAddress: {
+        streetAddress: "",
+        streetAddress2: "",
+        city: "",
+        state: "",
+        postalCode: "",
+      },
     });
 
     await user.save();
