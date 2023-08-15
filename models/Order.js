@@ -15,7 +15,21 @@ const orderSchema = new mongoose.Schema({
     ref: "User",
   },
   shippingAddress: {
-    type: String,
+    firstName: String,
+    lastName: String,
+    streetAddress: String,
+    addressLine2: String,
+    city: String,
+    state: String,
+    postalCode: String,
+  },
+  cartQuantity: {
+    type: Number,
+  },
+  creditCard: {
+    creditCardNumber: String,
+    expiration: String,
+    cVC: String,
   },
   isPaid: {
     type: Boolean,

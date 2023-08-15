@@ -74,7 +74,7 @@ export const loginUser = async (req, res) => {
     const { email, password } = req.body;
     // select() is used to explicitly select which field will be returned
     const user = await User.findOne({ email }).select(
-      "firstName lastName dateOfBirth email password"
+      "firstName lastName dateOfBirth email password favorites"
     );
     if (!user) {
       return res.status(404).json({ message: "Invalid Email or Password" });
@@ -148,7 +148,6 @@ export const updateUserFavoritesById = async (req, res) => {
   try {
     const { id } = req.params;
     const { favorites: favorite } = req.body;
-    console.log("favorite:", favorite);
 
     if (!favorite) {
       return res.status(400).json({ message: "Favorite Wine not provided" });
