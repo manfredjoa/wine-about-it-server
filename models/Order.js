@@ -5,6 +5,7 @@ const orderSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "WineData",
+      qty: Number,
     },
   ],
   total: {
@@ -17,7 +18,7 @@ const orderSchema = new mongoose.Schema({
   shippingAddress: {
     firstName: String,
     lastName: String,
-    streetAddress: String,
+    addressLine1: String,
     addressLine2: String,
     city: String,
     state: String,
@@ -25,11 +26,6 @@ const orderSchema = new mongoose.Schema({
   },
   cartQuantity: {
     type: Number,
-  },
-  creditCard: {
-    creditCardNumber: String,
-    expiration: String,
-    cVC: String,
   },
   isPaid: {
     type: Boolean,
@@ -39,9 +35,17 @@ const orderSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  isShipped: {
+    type: Boolean,
+    default: false,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
   },
 });
 

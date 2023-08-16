@@ -25,13 +25,14 @@ export const getOrderById = async (req, res) => {
 
 export const createOrder = async (req, res) => {
   try {
-    const { items, total, user, shippingAddress } = req.body;
+    const { items, total, user, shippingAddress, cartQuantity } = req.body;
 
     const order = new Order({
       items,
       total,
       user,
       shippingAddress,
+      cartQuantity,
     });
     await order.save();
 
