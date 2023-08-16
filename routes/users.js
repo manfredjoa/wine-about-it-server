@@ -8,7 +8,7 @@ router.post("/login", controllers.loginUser);
 router.get("/", controllers.getUsers);
 router.get("/id/:id", controllers.getUserById);
 router.delete("/:id", controllers.deleteUserById);
-router.put("/:id/favorites", controllers.updateUserFavoritesById);
+router.patch("/:id/favorites", controllers.updateUserFavoritesById);
 router.get("/verify", controllers.verify);
 
 export default router;

@@ -169,6 +169,33 @@ export const updateUserFavoritesById = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export const deleteUserFavoritesById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { favorites: favorite } = req.body;
+
+    if (!favorite) {
+      return res.status(400).json({ message: "Favorite Wine not provided" });
+    }
+
+    // Instead of using $push to add the favorite, we use $pull to remove the favorite
+    const wine = await User.findByIdAndUpdate(
+      id,
+      { $pull: { favorites: favorite } }, // Changed $push to $pull
+      { new: true }
+    );
+
+    if (!wine) {
+      return res.status(404).json({ message: "Invalid ID" });
+    }
+
+    res.json({ message: "Wine favorites removed successfully", wine });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+};
 //verify
 export const verify = async (req, res) => {
   try {
