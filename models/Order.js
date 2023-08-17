@@ -3,9 +3,10 @@ import mongoose from "mongoose";
 const orderSchema = new mongoose.Schema({
   items: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "WineData",
-      qty: Number,
+      wineDataId: { type: mongoose.Schema.Types.ObjectId, ref: "WineData" },
+      qty: {
+        type: Number,
+      },
     },
   ],
   total: {
@@ -43,7 +44,7 @@ const orderSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  user: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },

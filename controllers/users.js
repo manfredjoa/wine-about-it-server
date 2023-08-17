@@ -179,10 +179,9 @@ export const deleteUserFavoritesById = async (req, res) => {
       return res.status(400).json({ message: "Favorite Wine not provided" });
     }
 
-    // Instead of using $push to add the favorite, we use $pull to remove the favorite
     const wine = await User.findByIdAndUpdate(
       id,
-      { $pull: { favorites: favorite } }, // Changed $push to $pull
+      { $pull: { favorites: favorite } },
       { new: true }
     );
 
