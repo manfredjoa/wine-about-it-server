@@ -10,8 +10,8 @@ router.get("/id/:id", controllers.getWineById);
 router.get("/rose", controllers.getWineByRose);
 router.get("/red", controllers.getWineByRed);
 router.get("/white", controllers.getWineByWhite);
-router.get("/sparkling", controllers.getWineBySparkling);
-router.get("/country/:country", controllers.getWineByCountryState);
+// router.get("/sparkling", controllers.getWineBySparkling);
+// router.get("/country/:country", controllers.getWineByCountryState);
 // router.get("/suggests/:id", controllers.getSuggestedWines);
 
 // // Pairing Routes: Maybe MVP? Maybe not?
