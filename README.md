@@ -14,7 +14,7 @@ Welcome to the Wine About It Server Repository! This server is designed to suppo
   - [Usage](#usage)
 - [CRUD Functionality](#crud-functionality)
 - [Contributing](#contributing)
-- [License](#license)
+- [Collaborators](#collaborators)
 
 ## Introduction
 
