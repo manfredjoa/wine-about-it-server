@@ -1,35 +1,33 @@
-# 🍷 Wine About it API 🍷
+# 🍷 Wine About it Server 🍷
 
 ## Introduction
 
-Welcome to the Wine About It Server Repository! This server is designed to support the "Wine About It" application, providing the backend functionality required for the app to run smoothly.
-
-Within this API, there is data containing the type of wine, price of the wine, the country the wine originates from, and a detailed description of the wines themself.
+Welcome to the Wine About It Server Repository! This server is designed to support the **[Wine About It](https://wineaboutit.netlify.app/)** application, providing the API and backend functionality required for the app to run smoothly.
 
 ## Table of Contents
 
-- [Overview](#overview)
-
+- [Introduction](#introduction)
 - [Features](#features)
-
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
+  - [Usage](#usage)
+- [CRUD Functionality](#crud-functionality)
 - [Contributing](#contributing)
 - [License](#license)
 
-## Overview
+## Introduction
 
-This repository contains the backend server code for the Wine About It application. This server is built using Mongo DB, [Express](https://expressjs.com/), and [Node.JS](https://nodejs.org/). It communicates with a database to manage and retrieve information/data related to the app.
+This repository contains the backend server code for the **Wine About It** application. This server is built using [MongoDB](https://www.mongodb.com/), [Express.js](https://expressjs.com/), and [Node.js](https://nodejs.org/).
+
+Within this API, there is data containing the type of wine, price of the wine, the country the wine originates from, and a detailed description of each wine.
 
 ## Features
 
--User authentication and authorization
--CRUD operations for wines, reviews, and user profiles
--RESTful API endpoints for seamless communication with the frontend
--Error handling and validation to ensure data integrity
+- User authentication and authorization
+- Error handling and validation to ensure data integrity
+- CRUD operations for users, wines, and orders
+- RESTful API endpoints for seamless communication with the client
 
 ## Getting Started
 
@@ -42,91 +40,106 @@ This repository contains the backend server code for the Wine About It applicati
 
 1. Clone the repository:
 
-```bash
-   git clone https://github.com/manfredjoa/wine-about-it-server.git
+```
+git clone https://github.com/manfredjoa/wine-about-it-server.git
 ```
 
 2. Navigate to the project directory:
 
-```bash
+```
 cd wine-about-it-server
 ```
 
 3. Install the required dependencies:
 
-```bash
-npm install
+```
+npm i
 ```
 
 ### Usage
 
 To start the server, use the following command:
 
-```bash
-npm start
+```
+node server.js
 ```
 
-The server will run on the specified port, and you can access the API using the base URL provided in the console.
+This will start the server locally, and can be accessed in your browser at http://localhost:4000.
 
-## API Endpoints
+## CRUD Functionality
 
-### POST /api/auth/register:
+### User Endpoints
 
-Register a new user.
+#### GET
 
-### POST /api/auth/login:
+- **_/users_** - Returns all users
+- **_/users/id/:id_** - Returns a user by id
+- **_/users/verify_** - Verifies a user's token and returns a payload
 
-Authenticate and log in a user.
+#### POST
 
-### GET /api/wines:
+- **_/users/register_** - Registers a new user
+- **_/users/login_** - Logs in a user and adds a token to local storage
 
-Get a list of all wines.
+#### PATCH
 
-### GET /api/wines/:id:
+- **_/users/:id/favorites_** - Adds a wine to a user's favorites
+- **_/users/delete/:id/favorites_** - Removes a wine from a user's favorites
 
-Get details of a specific wine.
+#### DELETE
 
-### POST /api/wines:
+- **_/users/:id_** - Deletes a user by id
 
-Add a new wine.
+### Wine Endpoints
 
-### PUT /api/wines/:id:
+#### GET
 
-Update details of a wine.
+- **_/wines_** - Returns all wines
+- **_/wines/id/:id_** - Returns a wine by id
+- **_/wines/red_** - Returns all red wines
+- **_/wines/white_** - Returns all white wines
+- **_/wines/rose_** - Returns all rosé wines
 
-### DELETE /api/wines/:id:
+### Order Endpoints
 
-Delete a wine.
+#### GET
 
-### GET /api/reviews:
+- **_/order_** - Returns all orders
+- **_/order/:id_** - Returns an order by id
+- **_/order/user/:id_** - Returns all orders for a user
 
-Get a list of all reviews.
+#### POST
 
-### POST /api/reviews:
+- **_/order_** - Creates a new order
 
-Add a new review.
+#### DELETE
 
-### PUT /api/reviews/id:
-
-Update a review.
-
-### DELETE /api/reviews/id:
-
-Delete a review.
-
-### GET /api/profiles/id:
-
-Get profile information for a user.
-
-For more detailed information about each endpoint, refer to the API Documentation.
+- **_/order/:id_** - Deletes an order by id
 
 ## Contributing
 
-Contributions to the project are welcome! If you find a bug or want to add a new feature, please follow these steps:
+Contributions are welcome! If you'd like to contribute to **Wine About It**, please follow these steps:
 
-Fork the repository.
-Create a new branch for your feature or bug fix.
-Make your changes and test thoroughly.
-Commit your changes with a descriptive commit message.
-Push your changes to your forked repository.
-Create a pull request detailing your changes.
+- Clone this repository
+- Create a new branch for your feature by running `git checkout -b feature-name` in your terminal
+- Run `git push -u origin feature-name` to set the remote branch
+- `git add .` your modifications
+- `git commit -m'(modifications description)'` to commit your changes
+- `git push origin feature-name` to push your changes
+- Create a pull request describing your changes
+
+## Collaborators
+
+1. Alan Malpartida
+
+- [Portfolio](https://alanwebdev.com/)
+- [GitHub](https://github.com/alantothe)
+- [LinkedIn](https://www.linkedin.com/in/alan-malpartida-b0214428a/)
+
+2. Manfred Joa
+
+- [Portfolio](https://manfredjoadev.netlify.app)
+- [GitHub](https://github.com/manfredjoa)
+- [LinkedIn](https://www.linkedin.com/in/manfredjoa/)
+
+&copy; 2023 Wine About It
